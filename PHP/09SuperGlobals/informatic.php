@@ -4,5 +4,6 @@ echo "<pre>";
 print_r($_ENV);
 print_r($_SERVER);
 echo "<pre>";
-
+define("username","Username");
+echo username;
 ?>
