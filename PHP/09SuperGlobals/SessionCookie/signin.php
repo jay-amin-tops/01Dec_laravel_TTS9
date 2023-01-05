@@ -3,8 +3,13 @@
 require_once("header.php");
 if (isset($_REQUEST['btn-save'])) {
     $_SESSION['Testing'] = "checking";
+    // echo "<pre>";
+    // print_r($_REQUEST);
     if ($_POST['username'] == "TOPS" && $_REQUEST['password'] =="123") {
         $_SESSION['UserData'] = array("UserName"=>$_POST['username'],"password"=>$_REQUEST['password']);
+        if (isset($_REQUEST['setcookieuserlogin'])) {
+            setcookie("username","TOPS",time()+3600);
+        }
         header("location:userdashboard.php");
     }else{
         echo "Invalid user";
@@ -29,6 +34,11 @@ if (isset($_REQUEST['btn-save'])) {
                     <div class="row my-2">
                         <div class="col">
                             <input type="password" class="form-control" placeholder="Enter Password" name="password" id="password">
+                        </div>
+                    </div>
+                    <div class="row my-2 text-center">
+                        <div class="col">
+                            <input type="checkbox" name="setcookieuserlogin" value="true" id="setcookieuserlogin"> Remember me
                         </div>
                     </div>
                     <div class="row my-2 text-center">
