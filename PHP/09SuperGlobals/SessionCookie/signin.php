@@ -1,6 +1,14 @@
 <?php 
 
 require_once("header.php");
+
+if (isset($_COOKIE['username'])) {
+    if ($_COOKIE['username'] == "TOPS") {
+        header("location:userdashboard.php");
+    }
+}
+
+
 if (isset($_REQUEST['btn-save'])) {
     $_SESSION['Testing'] = "checking";
     // echo "<pre>";
@@ -9,6 +17,7 @@ if (isset($_REQUEST['btn-save'])) {
         $_SESSION['UserData'] = array("UserName"=>$_POST['username'],"password"=>$_REQUEST['password']);
         if (isset($_REQUEST['setcookieuserlogin'])) {
             setcookie("username","TOPS",time()+3600);
+            // $username = "value"
         }
         header("location:userdashboard.php");
     }else{
