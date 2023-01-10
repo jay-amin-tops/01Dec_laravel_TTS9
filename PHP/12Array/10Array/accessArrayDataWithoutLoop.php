@@ -19,17 +19,18 @@ echo "<pre>";
 echo "Filter Res<br>";
 // print_r($arr);
 print_r($arrFilter);
-
 function AccessArrayUseMap($arRec){
     return $arRec+5;
 }
 $arrMapRes = array_map("AccessArrayUseMap",$arr);
 // print_r($arr);
-echo "Filter Res<br>";
+echo "Map Res<br>";
 print_r($arrMapRes);
 
 function AccessArrayUseWalk($arRec,$arrD){
-    echo "value: ".$arRec."key: ".$arrD."<br>";
+    $added5 = $arRec+5;
+    echo "value: ".$added5."key: ".$arrD."<br>";
+    return $arRec+5;
 }
 $arrWalkRes = array_walk($arr,"AccessArrayUseWalk");
 print_r($arr);
